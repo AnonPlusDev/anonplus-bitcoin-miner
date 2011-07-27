@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "aboutdialog.h"
 
 namespace Ui {
     class MainWindow;
@@ -17,6 +18,11 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    AboutDialog* aboutDialog;
+
+private slots:
+    void on_help_about_triggered();
+
 };
 
 #endif // MAINWINDOW_H
