@@ -27,6 +27,8 @@ char *rpc_user, *rpc_pass;
 class Pool : public QObject
 {
 private:
+
+
     int pool_no;
     int prio;
     int accepted, rejected;
@@ -44,12 +46,19 @@ private:
     QString rpc_url, rpc_user, rpc_pass;
     QMutex mutex;
 
+    //Static vars;
+    static Pool* currentPool;
 
     Q_OBJECT
 public:
     explicit Pool(QObject *parent = 0);
 
     bool tset(bool &var);
+    bool tclear(bool &var);
+
+    // Static Functions
+    static Pool* current() {  return currentPool;  }
+
 
 signals:
 

@@ -15,3 +15,14 @@ bool Pool::tset(bool &var)
     mutex.unlock();
     return ret;
 }
+
+bool Pool::tclear(bool &var)
+{
+    bool ret;
+    mutex.lock();
+    ret = var;
+    var = false;
+    mutex.unlock();
+    return ret;
+}
+
