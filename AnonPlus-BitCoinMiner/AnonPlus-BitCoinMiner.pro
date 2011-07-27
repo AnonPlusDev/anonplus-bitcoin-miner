@@ -15,13 +15,16 @@ SOURCES += main.cpp\
     aboutdialog.cpp \
     minerclass.cpp \
     miningthread.cpp \
-    pool.cpp
+    pool.cpp \
+    pools.cpp
 
 HEADERS  += mainwindow.h \
     aboutdialog.h \
     minerclass.h \
     miningthread.h \
-    pool.h
+    pool.h \
+    global.h \
+    pools.h
 
 FORMS    += mainwindow.ui \
     aboutdialog.ui
