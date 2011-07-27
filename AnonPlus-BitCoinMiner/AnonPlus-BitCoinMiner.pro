@@ -13,11 +13,15 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     aboutdialog.cpp \
-    minerclass.cpp
+    minerclass.cpp \
+    miningthread.cpp \
+    pool.cpp
 
 HEADERS  += mainwindow.h \
     aboutdialog.h \
-    minerclass.h
+    minerclass.h \
+    miningthread.h \
+    pool.h
 
 FORMS    += mainwindow.ui \
     aboutdialog.ui
