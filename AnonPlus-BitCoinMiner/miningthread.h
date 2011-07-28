@@ -41,20 +41,29 @@ class MiningThread : public QThread
     static QString rpc_url;
     QNetworkAccessManager *manager;
     QJson::Parser json_rpc_call(const QString &,
-                         const QString &, const QString &,
+                         const QString &, const QByteArray &,
                          bool longpool_scan,
                          bool longpool
                          );
 
+
+
+
     Q_OBJECT
+    //Q_PROPERTY(bool want_longbool READ get_want_longpool WRITE set_want_longpool);
 public:
     explicit MiningThread(QObject *parent = 0);
     void run();
     bool submitWork(workio_cmd *wc);
     bool getWork(workio_cmd *wc);
     bool get_upstream_work(work *work);
+    bool get_want_longpool() const { return want_longpool; }
+    bool set_want_longpool(bool v) { want_longpool = v; }
 
 
+private:
+    bool have_longpool;
+    bool want_longpool;
 
 
 signals:

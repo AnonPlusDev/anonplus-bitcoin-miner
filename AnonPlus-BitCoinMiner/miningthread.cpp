@@ -4,8 +4,9 @@
 QString MiningThread::rpc_url = DEF_RPC_URL;
 
 MiningThread::MiningThread(QObject *parent) :
-    QThread(parent)
-
+    QThread(parent),
+    have_longpool(false),
+    want_longpool(false)
 {
 }
 
@@ -32,23 +33,40 @@ bool MiningThread::getWork(workio_cmd *wc)
 }
 
 QJson::Parser MiningThread::json_rpc_call(const QString& _url,
-                     const QString & _userpass , const QString & _rpc_req,
+                     const QString & _userpass , const QByteArray & _rpc_req,
                      bool _longpool_scan,
                      bool _longpool
                      )
 {
     QJson::Parser val, err_val, res_val;
     int rc;
+    bool lp_scanning = false;
+
     connect(this->manager, SIGNAL(finished(QNetworkReply*)),
             this, SLOT(networkReplyFinished(QNetworkReply*)));
+
 
     QUrl url = QUrl(_url);
     if(!_userpass.isEmpty())
         url.setUserInfo(_userpass);
-    QNetworkRequest netRec;
-    netRec.setUrl(url);
+    if (_longpool_scan)
+       lp_scanning = want_longpool && !have_longpool;
 
-    this->manager->get(netRec);
+    QNetworkRequest netRec;
+
+
+    netRec.setUrl(url);
+    netRec.setHeader(QNetworkRequest::ContentTypeHeader,  'application/json');
+    netRec.setRawHeader("Expect", "");
+    netRec.setRawHeader("User-Agent", PROGRAM_NAME);
+    //netRec.setHeader(QNetworkRequest::ContentLengthHeader, net);
+
+    if(lp_scanning)
+    {
+        // TODO: SET LPSCANNING RAW HEADER
+    }
+
+    this->manager->put(netRec, _rpc_req);
 }
 
 void MiningThread::networkReplyFinished ( QNetworkReply * reply )

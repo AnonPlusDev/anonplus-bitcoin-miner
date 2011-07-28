@@ -2,6 +2,7 @@
 #define GLOBAL_H
 
 #include <iostream>
+#include <QString>
 #define MAX_POOLS (32)
 #define DEF_RPC_URL		"http://127.0.0.1:8332/"
 
@@ -20,7 +21,12 @@ void applog(int prio, const char *fmt, ...);
 static int opt_n_threads;
 static int num_processors;
 
-static void initializeStatic();
+#define PROGRAM_NAME		"anonplus-bitcoin-miner 0.001"
+
+#define DEF_RPC_URL		"http://127.0.0.1:8332/"
+#define DEF_RPC_USERNAME	"rpcuser"
+#define DEF_RPC_PASSWORD	"rpcpass"
+#define DEF_RPC_USERPASS	DEF_RPC_USERNAME ":" DEF_RPC_PASSWORD
 
 
 #endif // GLOBAL_H
