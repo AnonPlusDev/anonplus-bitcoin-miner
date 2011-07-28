@@ -15,16 +15,15 @@ SOURCES += main.cpp\
     aboutdialog.cpp \
     minerclass.cpp \
     miningthread.cpp \
-    pool.cpp \
-    pools.cpp
+    global.cpp
 
 HEADERS  += mainwindow.h \
     aboutdialog.h \
     minerclass.h \
     miningthread.h \
-    pool.h \
-    global.h \
-    pools.h
+    global.h
 
 FORMS    += mainwindow.ui \
     aboutdialog.ui
+
+LIBS += -lqjson
