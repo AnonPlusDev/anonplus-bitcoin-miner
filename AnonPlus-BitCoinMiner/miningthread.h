@@ -2,7 +2,9 @@
 #define MININGTHREAD_H
 
 #include <QThread>
-#include <qjson/qobjecthelper.h>
+#include <QNetworkAccessManager>
+#include <QNetworkRequest>
+#include <qjson/qjson_export.h>
 #include <qjson/parser.h>
 #include "global.h"
 #ifdef __linux
@@ -37,6 +39,12 @@ class MiningThread : public QThread
 {
 
     static QString rpc_url;
+    QNetworkAccessManager *manager;
+    QJson::Parser json_rpc_call(const QString &,
+                         const QString &, const QString &,
+                         bool longpool_scan,
+                         bool longpool
+                         );
 
     Q_OBJECT
 public:
@@ -52,6 +60,7 @@ public:
 signals:
 
 public slots:
+    void networkReplyFinished ( QNetworkReply * reply );
 
 };
 

@@ -1,5 +1,5 @@
 #include <QtGui/QApplication>
-#include <qjson/json_parser.hh>
+
 #include "mainwindow.h"
 
 int main(int argc, char *argv[])
