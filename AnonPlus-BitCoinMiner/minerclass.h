@@ -2,35 +2,69 @@
 #define MINERCLASS_H
 
 #include <QObject>
-#include <QDateTime>
-#ifndef WIN32
-extern "C" {
-#include <sys/resource.h>
-}
-#endif
+#include <QNetworkAccessManager>
+#include <QNetworkRequest>
+#include <QNetworkReply>
+#include <qjson/qjson_export.h>
+#include <qjson/parser.h>
+#include "global.h"
 
-#define PROGRAM_NAME		"anonplus-bitcoin-pool-miner"
-#define DEF_RPC_URL		"http://127.0.0.1:8332/"
-#define DEF_RPC_USERNAME	"rpcuser"
-#define DEF_RPC_PASSWORD	"rpcpass"
-#define DEF_RPC_USERPASS	DEF_RPC_USERNAME ":" DEF_RPC_PASSWORD
+enum workio_commands {
+        WC_GET_WORK,
+        WC_SUBMIT_WORK,
+};
+
+struct work {
+        unsigned char	data[128];
+        unsigned char	hash1[64];
+        unsigned char	midstate[32];
+        unsigned char	target[32];
+
+        unsigned char	hash[32];
+};
+
+struct workio_cmd {
+        enum workio_commands	cmd;
+        struct thr_info		*thr;
+        union {
+                struct work	*work;
+        } u;
+};
 
 class MinerClass : public QObject
 {
-    int pools_active;
-    qint64 total_tv_start;
-    qint64 total_tv_end;
-    qint64 tm;
-    qint16 num_processors;
-    qint16 opt_n_threads;
+    static QString rpc_url;
+    QNetworkAccessManager *manager;
+    QJson::Parser json_rpc_call(const QString &,
+                         const QString &, const QByteArray &,
+                         bool longpool_scan,
+                         bool longpool
+                         );
+
+
+
 
     Q_OBJECT
+    //Q_PROPERTY(bool want_longbool READ get_want_longpool WRITE set_want_longpool);
 public:
     explicit MinerClass(QObject *parent = 0);
+
+    bool submitWork(workio_cmd *wc);
+    bool getWork(workio_cmd *wc);
+    bool get_upstream_work(work *work);
+    bool get_want_longpool() const { return want_longpool; }
+    bool set_want_longpool(bool v) { want_longpool = v; }
+
+
+private:
+    bool have_longpool;
+    bool want_longpool;
+
 
 signals:
 
 public slots:
+    void networkReplyFinished ( QNetworkReply * reply );
 
 };
 

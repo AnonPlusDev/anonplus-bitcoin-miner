@@ -7,10 +7,13 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     connect(ui->action_About, SIGNAL(triggered()), this, SLOT(on_help_about_triggered()));
+    connect(ui->pushButton, SIGNAL(clicked()), this, SLOT(on_button_start_triggered()));
+
 }
 
 MainWindow::~MainWindow()
 {
+    delete mt;
     delete ui;
 }
 
@@ -21,4 +24,10 @@ void MainWindow::on_help_about_triggered()
     aboutDialog->show();
 }
 
+
+void MainWindow::on_button_start_triggered()
+{
+    mt =  new MiningThread();
+    mt->start();
+}
 
