@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <QString>
+#include <QUrl>
 #define MAX_POOLS (32)
 #define DEF_RPC_URL		"http://127.0.0.1:8332/"
 
@@ -20,6 +21,10 @@ void applog(int prio, const char *fmt, ...);
 
 static int opt_n_threads;
 static int num_processors;
+
+static const QByteArray RCP_REQ("{\"method\": \"getwork\", \"params\": [], \"id\":0}\r\n");
+QUrl convertToUrl(const QString &schema, QString& url, const QString& username, const QString& password, const QString& port );
+
 
 #define PROGRAM_NAME		"anonplus-bitcoin-miner 0.001"
 
