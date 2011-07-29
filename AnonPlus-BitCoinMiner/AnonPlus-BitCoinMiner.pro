@@ -13,15 +13,13 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     aboutdialog.cpp \
-    minerclass.cpp \
-    miningthread.cpp \
-    global.cpp
+    global.cpp \
+    jsonrpccall.cpp
 
 HEADERS  += mainwindow.h \
     aboutdialog.h \
-    minerclass.h \
-    miningthread.h \
-    global.h
+    global.h \
+    jsonrpccall.h
 
 FORMS    += mainwindow.ui \
     aboutdialog.ui

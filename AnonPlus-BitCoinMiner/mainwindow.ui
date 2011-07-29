@@ -40,7 +40,11 @@
       <property name="sizeHint" stdset="0">
        <size>
         <width>20</width>
+<<<<<<< HEAD
         <height>40</height>
+=======
+        <height>154</height>
+>>>>>>> 5021be8
        </size>
       </property>
      </spacer>
