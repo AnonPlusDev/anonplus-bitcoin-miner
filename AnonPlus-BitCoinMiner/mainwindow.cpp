@@ -8,11 +8,8 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     connect(ui->action_About, SIGNAL(triggered()), this, SLOT(on_help_about_triggered()));
-<<<<<<< HEAD
-    connect(ui->pushButton, SIGNAL(clicked()), this, SLOT(on_button_start_triggered()));
-=======
     connect(ui->pushButton, SIGNAL(clicked()), this, SLOT(on_button_clicked()));
->>>>>>> 5021be8
+
 
 }
 
@@ -29,15 +26,6 @@ void MainWindow::on_help_about_triggered()
     aboutDialog->show();
 }
 
-
-<<<<<<< HEAD
-void MainWindow::on_button_start_triggered()
-{
-    mt =  new MiningThread();
-    mt->start();
-}
-
-=======
 void MainWindow::on_button_clicked()
 {
     if(mt == NULL)
@@ -58,4 +46,3 @@ void MainWindow::on_json_rpc_called(JsonRpcCall*, QVariant v)
     qDebug() << serializer.serialize( v);
 
 }
->>>>>>> 5021be8
