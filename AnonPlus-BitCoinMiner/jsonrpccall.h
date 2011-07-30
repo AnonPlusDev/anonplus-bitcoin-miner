@@ -29,6 +29,8 @@ private:
     QUrl url;
     bool longpool_scan;
     bool longbpool;
+    bool has_longpool;
+    QByteArray longpool_path;
     QNetworkAccessManager *manager;
 
 signals:
