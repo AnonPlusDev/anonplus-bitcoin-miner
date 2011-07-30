@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ConnectionForm</class>
+ <widget class="QWidget" name="ConnectionForm">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>255</width>
+    <height>169</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_scheme">
+       <property name="text">
+        <string>Scheme:</string>
+       </property>
+       <property name="buddy">
+        <cstring>combo_scheme</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QComboBox" name="combo_scheme">
+       <item>
+        <property name="text">
+         <string>http</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>https</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_server">
+       <property name="text">
+        <string>Server:</string>
+       </property>
+       <property name="buddy">
+        <cstring>field_server</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QLineEdit" name="field_server">
+       <property name="text">
+        <string>127.0.0.1</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_port">
+       <property name="text">
+        <string>Port:</string>
+       </property>
+       <property name="buddy">
+        <cstring>field_port</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QLineEdit" name="field_port">
+       <property name="inputMask">
+        <string>ddddd; </string>
+       </property>
+       <property name="text">
+        <string>8332</string>
+       </property>
+       <property name="echoMode">
+        <enum>QLineEdit::Normal</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="label_user">
+       <property name="text">
+        <string>Username:</string>
+       </property>
+       <property name="buddy">
+        <cstring>field_user</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QLineEdit" name="field_user">
+       <property name="text">
+        <string>rpcuser</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="label_pass">
+       <property name="text">
+        <string>Password:</string>
+       </property>
+       <property name="buddy">
+        <cstring>field_pass</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <widget class="QLineEdit" name="field_pass">
+       <property name="text">
+        <string>rpcpass</string>
+       </property>
+       <property name="echoMode">
+        <enum>QLineEdit::Password</enum>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>5</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>combo_scheme</tabstop>
+  <tabstop>field_server</tabstop>
+  <tabstop>field_port</tabstop>
+  <tabstop>field_user</tabstop>
+  <tabstop>field_pass</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>

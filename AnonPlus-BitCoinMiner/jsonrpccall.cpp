@@ -51,11 +51,24 @@ void JsonRpcCall::rpcCall(const QUrl& _url,
     QNetworkRequest netRec;
     netRec.setUrl(_url);
 
-    netRec.setHeader(QNetworkRequest::ContentTypeHeader,  'application/json');
+    netRec.setHeader(QNetworkRequest::ContentTypeHeader,  "application/json");
     netRec.setRawHeader("Expect", "");
-    netRec.setRawHeader("User-Agent", PROGRAM_NAME);
+    netRec.setRawHeader("User-Agent", "cpuminer 1.0.2");
 
     netRec.setHeader(QNetworkRequest::ContentLengthHeader, RCP_REQ.size());
+
+    QList<QByteArray> headersPairs =   netRec.rawHeaderList();
+    qDebug() << "++++++++++++++++++++++++++++++++++++++++";
+    qDebug() << "+           REQUEST HEADERS            +";
+    qDebug() << "++++++++++++++++++++++++++++++++++++++++";
+    for(int i=0; i < headersPairs.size(); ++i )
+    {
+        QString tmp("");
+        tmp += headersPairs.at(i);
+        tmp += " : ";
+        tmp += netRec.rawHeader(headersPairs.at(i));
+        qDebug() << tmp;
+    }
 /*
     if(lp_scanning)
     {
@@ -71,7 +84,11 @@ void JsonRpcCall::networkReplyFinished ( QNetworkReply * reply )
 {
 
     qDebug("Reply Reached!");
+    qDebug() << "++++++++++++++++++++++++++++++++++++++++";
+    qDebug() << "+           RESPONSE HEADERS           +";
+    qDebug() << "++++++++++++++++++++++++++++++++++++++++";
     QList<QNetworkReply::RawHeaderPair> headersPairs =   reply->rawHeaderPairs();
+
     for(int i=0; i < headersPairs.size(); ++i )
     {
         QString tmp("");

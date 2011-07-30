@@ -14,14 +14,17 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     aboutdialog.cpp \
     global.cpp \
-    jsonrpccall.cpp
+    jsonrpccall.cpp \
+    connectionform.cpp
 
 HEADERS  += mainwindow.h \
     aboutdialog.h \
     global.h \
-    jsonrpccall.h
+    jsonrpccall.h \
+    connectionform.h
 
 FORMS    += mainwindow.ui \
-    aboutdialog.ui
+    aboutdialog.ui \
+    connectionform.ui
 
 LIBS += -lqjson

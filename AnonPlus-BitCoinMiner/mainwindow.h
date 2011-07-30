@@ -15,6 +15,7 @@
 #include <QMainWindow>
 #include "aboutdialog.h"
 #include "jsonrpccall.h"
+#include "connectionform.h"
 
 namespace Ui {
     class MainWindow;
@@ -32,6 +33,7 @@ private:
     Ui::MainWindow *ui;
     AboutDialog* aboutDialog;
     JsonRpcCall* mt;
+    ConnectionForm conForm;
 
 private slots:
     void on_help_about_triggered();
