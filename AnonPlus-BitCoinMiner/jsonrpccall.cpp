@@ -54,7 +54,7 @@ void JsonRpcCall::rpcCall(const QUrl& _url,
 
     netRec.setHeader(QNetworkRequest::ContentTypeHeader,  "application/json");
     netRec.setRawHeader("Expect", "");
-    netRec.setRawHeader("User-Agent", "cpuminer 1.0.2");
+    netRec.setRawHeader("User-Agent", PROGRAM_NAME);
 
     netRec.setHeader(QNetworkRequest::ContentLengthHeader, RCP_REQ.size());
 
