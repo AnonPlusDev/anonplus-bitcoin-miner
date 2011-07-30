@@ -27,6 +27,7 @@ JsonRpcCall::~JsonRpcCall()
 void JsonRpcCall::rpcCall(const QUrl& _url,
                           bool _longpool_scan,
                           bool _longpool){
+    static const QByteArray RCP_REQ("{\"method\": \"getwork\", \"params\": [], \"id\":0}\r\n");
     qDebug("rpcCall reached");
     longpool_scan = _longpool_scan;
     longbpool = _longpool;
@@ -69,6 +70,7 @@ void JsonRpcCall::rpcCall(const QUrl& _url,
         tmp += netRec.rawHeader(headersPairs.at(i));
         qDebug() << tmp;
     }
+
 /*
     if(lp_scanning)
     {
@@ -76,7 +78,7 @@ void JsonRpcCall::rpcCall(const QUrl& _url,
     }
  */
 
-    this->manager->put(netRec, RCP_REQ);
+    this->manager->post(netRec, RCP_REQ);
 
 }
 
